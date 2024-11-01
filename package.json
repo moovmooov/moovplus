@@ -15,6 +15,7 @@
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^0.6.1",
     "@nuxt/eslint-config": "^0.6.1",
+    "@nuxt/fonts": "^0.10.2",
     "@nuxt/ui": "^2.18.7",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/eslint-module": "^4.1.0",
