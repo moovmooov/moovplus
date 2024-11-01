@@ -2,10 +2,14 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    "@nuxt/ui",
-    "@nuxt/eslint",
-    "@nuxtjs/eslint-module",
-    "@nuxt/fonts",
+    '@nuxt/ui',
+    '@nuxt/eslint',
+    '@nuxtjs/eslint-module',
+    '@nuxt/fonts',
+    '@nuxtjs/color-mode'
   ],
-  compatibilityDate: "2024-10-31",
-});
+  colorMode: {
+    preference: 'light'
+  },
+  compatibilityDate: '2024-10-31'
+})
