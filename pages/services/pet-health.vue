@@ -10,7 +10,6 @@
     <div class="w-full lg:w-2/3 bg-gray-50 flex flex-col justify-center items-center p-4 lg:px-12">
       <div class="w-full max-w-2xl container mx-auto">
         <div class="mb-6 lg:hidden">
-          <UProgress :value="((currentStep + 1) / steps.length) * 100" class="mb-3" color="sky" />
           <FormStepsHeader
             :current-step="currentStep"
             :total-steps="steps.length"
@@ -36,12 +35,11 @@
             </UButton>
 
             <UButton
-              class="w-full sm:w-auto px-8 py-3"
+              class="ml-auto px-8 py-3"
               :class="[
                 isLastStep ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'
               ]"
               type="submit"
-              :disabled="!canGoNext"
             >
               {{ isLastStep ? 'Finalizar' : 'Próximo' }}
               <UIcon v-if="!isLastStep" name="i-heroicons-arrow-right" class="ml-2" />
@@ -51,6 +49,7 @@
         </UForm>
       </div>
     </div>
+    <FormStepsSuccessModal v-model="showSuccessModal" />
   </div>
 </template>
 
@@ -65,12 +64,15 @@ const locationData = useState<LocationType>('locationData')
 
 const formState = computed(() => [userData.value, petData.value, locationData.value])
 
-const { steps, currentStep, canGoNext, canGoPrevious, nextStep, previousStep } = useFormStepper()
+const { steps, currentStep, canGoPrevious, nextStep, previousStep } = useFormStepper()
 
 const isLastStep = computed(() => currentStep.value === steps.length - 1)
 
+const showSuccessModal = ref(false)
+
 async function onSubmit() {
   if (isLastStep.value) {
+    showSuccessModal.value = true
     return
   }
   nextStep()

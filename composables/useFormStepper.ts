@@ -51,7 +51,6 @@ export function useFormStepper() {
   return {
     steps,
     currentStep,
-    canGoNext,
     canGoPrevious,
     nextStep,
     previousStep

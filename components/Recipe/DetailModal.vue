@@ -54,11 +54,7 @@
               <div>
                 <p class="text-sm text-gray-600">Porções</p>
                 <p class="font-medium text-gray-800 flex items-center gap-1">
-                  {{
-                    Array(Math.floor(recipe.servings / 2))
-                      .fill('👥')
-                      .join('')
-                  }}{{ recipe.servings % 2 ? '👤' : '' }}
+                  {{ servingsDisplay }}
                 </p>
               </div>
             </div>
@@ -148,5 +144,11 @@ const isOpen = computed({
 
 const totalTime = computed(() => {
   return props.recipe.prepTimeMinutes + props.recipe.cookTimeMinutes
+})
+
+const servingsDisplay = computed(() => {
+  const fullPairs = Math.floor(props.recipe.servings / 2)
+  const hasSingle = props.recipe.servings % 2 === 1
+  return '👥'.repeat(fullPairs) + (hasSingle ? '👤' : '')
 })
 </script>

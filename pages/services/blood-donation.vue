@@ -48,10 +48,7 @@
           <template #bloodGroup-data="{ row }">
             <span
               class="px-3 py-1 rounded-full text-sm font-medium"
-              :class="{
-                'bg-red-100 text-red-800': row.bloodGroup.includes('+'),
-                'bg-blue-100 text-blue-800': row.bloodGroup.includes('-')
-              }"
+              :class="bloodGroupClass(row.bloodGroup)"
             >
               {{ row.bloodGroup }}
             </span>
@@ -72,11 +69,9 @@
           class="flex items-center justify-between px-6 py-4 border-t border-gray-200 dark:border-gray-700"
         >
           <div class="text-sm text-gray-600 dark:text-gray-400">
-            Mostrando {{ (page - 1) * itemsPerPage + 1 }} a
-            {{ Math.min(page * itemsPerPage, data?.total || 0) }} de
-            {{ data?.total || 0 }} resultados
+            Mostrando {{ currentPageStart }} a {{ currentPageEnd }} de {{ totalResults }} resultados
           </div>
-          <UPagination v-model="page" :total="data?.total || 0" :per-page="itemsPerPage" />
+          <UPagination v-model="page" :total="totalResults" :per-page="itemsPerPage" />
         </div>
       </div>
     </div>
@@ -85,31 +80,15 @@
 
 <script setup lang="ts">
 import { refDebounced } from '@vueuse/core'
+import { computed } from 'vue'
 
 const columns = [
-  {
-    key: 'image'
-  },
-  {
-    key: 'fullName',
-    label: 'Nome'
-  },
-  {
-    key: 'bloodGroup',
-    label: 'Tipo Sanguíneo'
-  },
-  {
-    key: 'birthDate',
-    label: 'Data de Nascimento'
-  },
-  {
-    key: 'gender',
-    label: 'Sexo'
-  },
-  {
-    key: 'location',
-    label: 'Localização'
-  }
+  { key: 'image' },
+  { key: 'fullName', label: 'Nome' },
+  { key: 'bloodGroup', label: 'Tipo Sanguíneo' },
+  { key: 'birthDate', label: 'Data de Nascimento' },
+  { key: 'gender', label: 'Sexo' },
+  { key: 'location', label: 'Localização' }
 ]
 
 const query = ref('')
@@ -118,4 +97,13 @@ const page = ref(1)
 const itemsPerPage = 10
 
 const { donors, data, status } = useDonors(queryDebounced, page, itemsPerPage)
+
+const bloodGroupClass = computed(() => (bloodGroup: string) => ({
+  'bg-red-100 text-red-800': bloodGroup.includes('+'),
+  'bg-blue-100 text-blue-800': bloodGroup.includes('-')
+}))
+
+const currentPageStart = computed(() => (page.value - 1) * itemsPerPage + 1)
+const currentPageEnd = computed(() => Math.min(page.value * itemsPerPage, data.value?.total || 0))
+const totalResults = computed(() => data.value?.total || 0)
 </script>
