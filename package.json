@@ -31,6 +31,8 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "radix-vue": "^1.9.8"
+    "maska": "^3.0.3",
+    "radix-vue": "^1.9.8",
+    "zod": "^3.23.8"
   }
 }

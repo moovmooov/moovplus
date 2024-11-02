@@ -3,7 +3,7 @@ module.exports = {
   plugins: [],
   theme: {
     fontFamily: {
-      sans: ["Inter"],
-    },
-  },
-};
+      sans: ['Inter']
+    }
+  }
+}

@@ -11,5 +11,11 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light'
   },
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    }
+  },
   compatibilityDate: '2024-10-31'
 })
