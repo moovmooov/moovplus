@@ -13,6 +13,7 @@
           data-maska="##.###-###"
           class="rounded-lg shadow-sm"
           placeholder="00.000-000"
+          inputmode="numeric"
         />
       </UFormGroup>
 

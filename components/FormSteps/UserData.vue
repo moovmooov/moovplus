@@ -19,6 +19,7 @@
           data-maska="##/##/####"
           placeholder="dd/mm/aaaa"
           class="rounded-lg shadow-sm"
+          inputmode="numeric"
         />
       </UFormGroup>
       <UFormGroup label="CPF" name="cpf">
@@ -28,6 +29,7 @@
           class="rounded-lg shadow-sm"
           data-maska="###.###.###-##"
           placeholder="000.000.000-00"
+          inputmode="numeric"
         />
       </UFormGroup>
 
@@ -42,6 +44,7 @@
             data-maska-tokens="0:[0-9]"
             class="rounded-lg shadow-sm pl-9"
             placeholder="0,00"
+            inputmode="numeric"
           />
         </div>
       </UFormGroup>
