@@ -11,9 +11,17 @@
       <div class="md:w-3/5 flex flex-col h-full">
         <div class="p-4 md:p-8 flex-1 overflow-auto">
           <div class="mb-6 md:mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
-              {{ recipe.name }}
-            </h2>
+            <div class="flex justify-between items-start mb-4">
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
+                {{ recipe.name }}
+              </h2>
+
+              <UIcon
+                name="i-heroicons-x-mark"
+                class="w-6 h-6 text-gray-500 cursor-pointer"
+                @click="isOpen = false"
+              />
+            </div>
 
             <div class="flex flex-wrap gap-2">
               <span
