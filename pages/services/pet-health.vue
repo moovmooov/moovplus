@@ -11,20 +11,41 @@
       <div class="w-full max-w-2xl container mx-auto">
         <div class="mb-6 lg:hidden">
           <UProgress :value="((currentStep + 1) / steps.length) * 100" class="mb-3" color="sky" />
-          <div class="text-center">
-            <p class="text-sm text-gray-600">Passo {{ currentStep + 1 }} de {{ steps.length }}</p>
-            <h2 class="text-xl font-medium text-gray-900">{{ steps[currentStep].title }}</h2>
-          </div>
+          <StepHeader
+            :current-step="currentStep"
+            :total-steps="steps.length"
+            :title="steps[currentStep].title"
+          />
         </div>
-        <UForm :schema="schema[currentStep]" :state="state[currentStep]" @submit="onSubmit">
-          <component :is="formComponents[currentStep]" />
-          <div class="flex justify-end mt-12">
+        <UForm
+          :schema="steps[currentStep].schema"
+          :state="formState[currentStep]"
+          @submit="onSubmit"
+        >
+          <component :is="steps[currentStep].component" />
+
+          <div class="flex justify-between mt-12">
             <UButton
-              class="w-full sm:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-lg transition-colors duration-200"
-              type="submit"
+              v-if="canGoPrevious"
+              variant="outline"
+              class="px-8 py-3 text-blue-600 hover:text-blue-700"
+              @click="previousStep"
             >
-              Próximo
-              <UIcon name="i-heroicons-arrow-right" class="ml-2" />
+              <UIcon name="i-heroicons-arrow-left" class="mr-2" />
+              Anterior
+            </UButton>
+
+            <UButton
+              class="w-full sm:w-auto px-8 py-3"
+              :class="[
+                isLastStep ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'
+              ]"
+              type="submit"
+              :disabled="!canGoNext"
+            >
+              {{ isLastStep ? 'Finalizar' : 'Próximo' }}
+              <UIcon v-if="!isLastStep" name="i-heroicons-arrow-right" class="ml-2" />
+              <UIcon v-else name="i-heroicons-check" class="ml-2" />
             </UButton>
           </div>
         </UForm>
@@ -34,35 +55,24 @@
 </template>
 
 <script setup lang="ts">
-import type { Component } from 'vue'
-import { schema } from '@/utils/zod-schemas'
-import FormStepsUserData, { type UserType } from '@/components/FormSteps/UserData.vue'
-import FormStepsPetData, { type PetType } from '@/components/FormSteps/PetData.vue'
-import FormStepsLocationData, { type LocationType } from '@/components/FormSteps/LocationData.vue'
-import FormStepsConfirmData from '@/components/FormSteps/ConfirmData.vue'
+import type { UserType } from '~/components/FormSteps/UserData.vue'
+import type { PetType } from '~/components/FormSteps/PetData.vue'
+import type { LocationType } from '~/components/FormSteps/LocationData.vue'
 
 const userData = useState<UserType>('userData')
 const petData = useState<PetType>('petData')
 const locationData = useState<LocationType>('locationData')
 
-const state = computed(() => [userData.value, petData.value, locationData.value])
+const formState = computed(() => [userData.value, petData.value, locationData.value])
 
-const steps = [
-  { title: 'Seus Dados' },
-  { title: 'Dados do Pet' },
-  { title: 'Endereço' },
-  { title: 'Confirmação dos dados' }
-]
-const currentStep = ref(0)
+const { steps, currentStep, canGoNext, canGoPrevious, nextStep, previousStep } = useFormStepper()
+
+const isLastStep = computed(() => currentStep.value === steps.length - 1)
 
 async function onSubmit() {
-  currentStep.value++
-}
-
-const formComponents: Record<number, Component> = {
-  0: FormStepsUserData,
-  1: FormStepsPetData,
-  2: FormStepsLocationData,
-  3: FormStepsConfirmData
+  if (isLastStep.value) {
+    return
+  }
+  nextStep()
 }
 </script>

@@ -1,14 +1,11 @@
 import { z } from 'zod'
-import { isAgeWithinRange, isValidCPF } from '@/utils/validators'
-export const schema = [
+import { isValidCPF } from '@/utils/validators'
+import type { ZodSchema } from 'zod'
+
+export const schema: ZodSchema[] = [
   z.object({
     name: z.string().trim().min(1, 'O nome é obrigatório'),
-    birthDate: z
-      .string()
-      .trim()
-      .min(1, 'A data de nascimento é obrigatória')
-      .transform((val) => new Date(val))
-      .refine((date) => isAgeWithinRange(date, 18, 65), 'A idade deve estar entre 18 e 65 anos'),
+    birthDate: z.string().trim().min(1, 'A data de nascimento é obrigatória'),
     cpf: z
       .string()
       .trim()

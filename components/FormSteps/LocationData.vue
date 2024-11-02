@@ -5,48 +5,50 @@
     </h1>
     <p class="text-gray-600 mb-8">Por favor, preencha seu endereço abaixo</p>
 
-    <UFormGroup label="CEP" name="cep">
-      <UInput
-        v-model="locationData.cep"
-        v-maska
-        data-maska="##.###-###"
-        class="rounded-lg shadow-sm"
-        placeholder="00.000-000"
-      />
-    </UFormGroup>
+    <div class="space-y-6">
+      <UFormGroup label="CEP" name="cep">
+        <UInput
+          v-model="locationData.cep"
+          v-maska
+          data-maska="##.###-###"
+          class="rounded-lg shadow-sm"
+          placeholder="00.000-000"
+        />
+      </UFormGroup>
 
-    <UFormGroup label="Estado" name="state">
-      <USelectMenu
-        v-model="locationData.state"
-        :options="brazilStates"
-        placeholder="Selecione um estado"
-        :disabled="!locationData.cep"
-      />
-    </UFormGroup>
+      <UFormGroup label="Estado" name="state">
+        <USelectMenu
+          v-model="locationData.state"
+          :options="brazilStates"
+          placeholder="Selecione um estado"
+          :disabled="!locationData.cep"
+        />
+      </UFormGroup>
 
-    <UFormGroup label="Cidade" name="city">
-      <UInput
-        v-model="locationData.city"
-        class="rounded-lg shadow-sm"
-        :disabled="!locationData.cep"
-      />
-    </UFormGroup>
+      <UFormGroup label="Cidade" name="city">
+        <UInput
+          v-model="locationData.city"
+          class="rounded-lg shadow-sm"
+          :disabled="!locationData.cep"
+        />
+      </UFormGroup>
 
-    <UFormGroup label="Bairro" name="neighborhood">
-      <UInput
-        v-model="locationData.neighborhood"
-        class="rounded-lg shadow-sm"
-        :disabled="!locationData.cep"
-      />
-    </UFormGroup>
+      <UFormGroup label="Bairro" name="neighborhood">
+        <UInput
+          v-model="locationData.neighborhood"
+          class="rounded-lg shadow-sm"
+          :disabled="!locationData.cep"
+        />
+      </UFormGroup>
 
-    <UFormGroup label="Rua" name="street">
-      <UInput
-        v-model="locationData.street"
-        class="rounded-lg shadow-sm"
-        :disabled="!locationData.cep"
-      />
-    </UFormGroup>
+      <UFormGroup label="Rua" name="street">
+        <UInput
+          v-model="locationData.street"
+          class="rounded-lg shadow-sm"
+          :disabled="!locationData.cep"
+        />
+      </UFormGroup>
+    </div>
   </div>
 </template>
 

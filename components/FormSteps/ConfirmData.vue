@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-4xl mx-auto px-4">
-    <div class="text-center mb-8 md:mb-12">
+    <div class="mb-8 md:mb-12">
       <h1 class="text-2xl md:text-4xl font-bold mb-3 text-gray-800">Vamos confirmar seus dados?</h1>
       <p class="text-gray-600">Por favor, confira se os dados abaixo estão corretos</p>
     </div>
@@ -22,24 +22,24 @@
             </div>
             <div class="flex flex-col">
               <span class="text-sm font-medium text-gray-500">Data de Nascimento</span>
-              <span class="font-medium text-gray-800" v-maska data-maska="##/##/####">{{
-                userData.birthDate || '-'
-              }}</span>
+              <span v-maska data-maska="##/##/####" class="font-medium text-gray-800">
+                {{ userData.birthDate || '-' }}
+              </span>
             </div>
             <div class="flex flex-col">
               <span class="text-sm font-medium text-gray-500">CPF</span>
-              <span class="font-medium text-gray-800" v-maska data-maska="###.###.###-##">{{
-                userData.cpf || '-'
-              }}</span>
+              <span v-maska data-maska="###.###.###-##" class="font-medium text-gray-800">
+                {{ userData.cpf || '-' }}
+              </span>
             </div>
             <div class="flex flex-col">
               <span class="text-sm font-medium text-gray-500">Renda Mensal</span>
               <span
-                class="font-medium text-gray-800"
                 v-maska
                 data-maska="###.###.###.##0,00"
                 data-maska-reversed
                 data-maska-tokens="0:[0-9]"
+                class="font-medium text-gray-800"
                 >R$ {{ userData.monthlyIncome || '-' }}</span
               >
             </div>
@@ -80,9 +80,9 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           <div class="flex flex-col">
             <span class="text-sm font-medium text-gray-500">CEP</span>
-            <span class="font-medium text-gray-800" v-maska data-maska="##.###-###">{{
-              locationData.cep || '-'
-            }}</span>
+            <span v-maska data-maska="##.###-###" class="font-medium text-gray-800">
+              {{ locationData.cep || '-' }}
+            </span>
           </div>
           <div class="flex flex-col">
             <span class="text-sm font-medium text-gray-500">Estado</span>

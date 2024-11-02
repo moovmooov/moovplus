@@ -1,29 +1,31 @@
 <template>
-  <div class="space-y-6">
+  <div>
     <h1 class="text-3xl font-bold mb-2 text-gray-800">
       Prazer em te conhecer, {{ userData.name.split(' ')[0] }}!
     </h1>
     <p class="text-gray-600 mb-8">Por favor, preencha os dados do seu pet abaixo</p>
-    <UFormGroup label="Especie" name="species">
-      <USelectMenu
-        v-model="petData.species"
-        :options="species"
-        placeholder="Selecione uma espécie"
-      />
-    </UFormGroup>
+    <div class="space-y-6">
+      <UFormGroup label="Especie" name="species">
+        <USelectMenu
+          v-model="petData.species"
+          :options="species"
+          placeholder="Selecione uma espécie"
+        />
+      </UFormGroup>
 
-    <UFormGroup label="Raça" name="breed">
-      <USelectMenu
-        v-model="petData.breed"
-        :disabled="!petData.species"
-        :options="petData.species ? breedsItems[petData.species] : []"
-        placeholder="Selecione uma raça"
-      />
-    </UFormGroup>
+      <UFormGroup label="Raça" name="breed">
+        <USelectMenu
+          v-model="petData.breed"
+          :disabled="!petData.species"
+          :options="petData.species ? breedsItems[petData.species] : []"
+          placeholder="Selecione uma raça"
+        />
+      </UFormGroup>
 
-    <UFormGroup v-if="petData.breed === 'Outro'" label="Outra Raça" name="customBreed">
-      <UInput v-model="petData.customBreed" placeholder="Digite a raça do seu pet" />
-    </UFormGroup>
+      <UFormGroup v-if="petData.breed === 'Outro'" label="Outra Raça" name="customBreed">
+        <UInput v-model="petData.customBreed" placeholder="Digite a raça do seu pet" />
+      </UFormGroup>
+    </div>
   </div>
 </template>
 
