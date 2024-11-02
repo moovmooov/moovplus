@@ -1,3 +1,7 @@
+<script setup>
+usePrimaryColor()
+</script>
+
 <template>
   <NuxtLayout>
     <NuxtPage class="page-enter-active" />
