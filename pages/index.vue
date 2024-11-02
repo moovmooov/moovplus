@@ -12,7 +12,7 @@
         v-for="card in cards"
         :key="card.title"
         :to="card.to"
-        class="transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-xl"
+        class="transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-xl"
       >
         <HomeCard
           :title="card.title"
@@ -48,7 +48,7 @@ const cards = [
     description: 'Encontre candidatos ideais para doação de sangue e salve vidas!',
     image:
       'https://tdsa.com.br/wp-content/uploads/2021/08/img-5-acoes-para-preparar-uma-doacao-de-sangue.jpg',
-    to: '/services/donations',
+    to: '/services/blood-donation',
     color: 'bg-red-500'
   }
 ]
