@@ -30,6 +30,7 @@
           v-model="locationData.city"
           class="rounded-lg shadow-sm"
           :disabled="!locationData.cep"
+          placeholder="Digite o nome da cidade"
         />
       </UFormGroup>
 
@@ -38,6 +39,7 @@
           v-model="locationData.neighborhood"
           class="rounded-lg shadow-sm"
           :disabled="!locationData.cep"
+          placeholder="Digite o nome do bairro"
         />
       </UFormGroup>
 
@@ -46,6 +48,7 @@
           v-model="locationData.street"
           class="rounded-lg shadow-sm"
           :disabled="!locationData.cep"
+          placeholder="Digite o nome da rua"
         />
       </UFormGroup>
     </div>

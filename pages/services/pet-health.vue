@@ -4,14 +4,14 @@
       class="hidden lg:flex w-full lg:w-1/3 bg-gradient-to-b from-blue-600 to-blue-800 flex-col justify-center items-center p-4 lg:px-8 shadow-2xl"
     >
       <div class="w-full max-w-md py-6 lg:py-0">
-        <FormStepper :steps="steps" :current-step="currentStep" />
+        <FormStepsStepper :steps="steps" :current-step="currentStep" />
       </div>
     </div>
     <div class="w-full lg:w-2/3 bg-gray-50 flex flex-col justify-center items-center p-4 lg:px-12">
       <div class="w-full max-w-2xl container mx-auto">
         <div class="mb-6 lg:hidden">
           <UProgress :value="((currentStep + 1) / steps.length) * 100" class="mb-3" color="sky" />
-          <StepHeader
+          <FormStepsHeader
             :current-step="currentStep"
             :total-steps="steps.length"
             :title="steps[currentStep].title"

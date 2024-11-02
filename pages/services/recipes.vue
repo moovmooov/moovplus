@@ -46,26 +46,10 @@
 </template>
 
 <script setup lang="ts">
-type Recipe = {
-  id: number
-  name: string
-  ingredients: string[]
-  instructions: string[]
-  prepTimeMinutes: number
-  cookTimeMinutes: number
-  servings: number
-  caloriesPerServing: number
-  tags: string[]
-  image: string
-}
+import type { Recipe } from '~/types/recipe'
 
-type RecipeResponse = {
-  recipes: Recipe[]
-}
+const { recipes, error } = useRecipes()
 
-const { data, error } = await useFetch<RecipeResponse>('https://dummyjson.com/recipes')
-
-const recipes = computed(() => data.value?.recipes || [])
 const selectedCategories = ref<string[]>([])
 
 const categories = computed(() => {
