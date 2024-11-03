@@ -8,7 +8,6 @@ export function isAgeWithinRange(birthDate: Date, minAge: number, maxAge: number
   return finalAge >= minAge && finalAge <= maxAge
 }
 
-// https://gist.github.com/joaohcrangel/8bd48bcc40b9db63bef7201143303937
 export function isValidCPF(value: string) {
   if (typeof value !== 'string') {
     return false

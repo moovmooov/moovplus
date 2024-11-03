@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col lg:flex-row min-h-screen">
+  <div class="flex flex-col lg:flex-row min-h-screen h-full">
     <div
       class="hidden lg:flex w-full lg:w-1/3 bg-gradient-to-b from-blue-600 to-blue-800 flex-col justify-center items-center p-4 lg:px-8 shadow-2xl"
     >
@@ -7,7 +7,9 @@
         <FormStepsStepper :steps="steps" :current-step="currentStep" />
       </div>
     </div>
-    <div class="w-full lg:w-2/3 bg-gray-50 flex flex-col justify-center items-center p-4 lg:px-12">
+    <div
+      class="w-full lg:w-2/3 bg-gray-50 flex flex-col justify-center items-center p-4 lg:px-12 flex-grow"
+    >
       <div class="w-full max-w-2xl container mx-auto">
         <div class="mb-6 lg:hidden">
           <FormStepsHeader

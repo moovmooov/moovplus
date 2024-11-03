@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { isValidCPF } from '@/utils/validators'
+import { isValidCPF, isAgeWithinRange } from '@/utils/validators'
 import type { ZodSchema } from 'zod'
 
 const userSchema = z.object({
@@ -11,7 +11,20 @@ const userSchema = z.object({
       (val) => val.split(' ').filter(Boolean).length >= 2,
       'O nome deve ter ao menos 2 palavras'
     ),
-  birthDate: z.string().trim().min(1, 'A data de nascimento é obrigatória'),
+  birthDate: z
+    .string()
+    .trim()
+    .min(1, 'A data de nascimento é obrigatória')
+    .refine((val) => {
+      const [day, month, year] = val.split('/').map(Number)
+      const date = new Date(year, month - 1, day)
+      return !isNaN(date.getTime())
+    }, 'Data de nascimento inválida')
+    .refine((val) => {
+      const [day, month, year] = val.split('/').map(Number)
+      const date = new Date(year, month - 1, day)
+      return isAgeWithinRange(date, 18, 65)
+    }, 'A idade deve estar entre 18 e 65 anos'),
   cpf: z
     .string()
     .trim()
