@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <div class="bg-gradient-to-r from-red-50 to-red-100 py-16">
+    <div class="bg-gradient-to-r from-red-800 to-red-500 py-16">
       <div class="container mx-auto px-4">
-        <h1 class="text-5xl md:text-6xl font-bold text-red-900 mb-6">Doadores de Sangue</h1>
-        <p class="text-xl text-red-700 mb-8 max-w-2xl">
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Doadores de Sangue</h1>
+        <p class="text-xl text-white mb-8 max-w-2xl">
           Encontre e conecte-se com doadores de sangue em sua região. Cada doação pode salvar até 4
           vidas!
         </p>

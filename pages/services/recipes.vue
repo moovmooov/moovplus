@@ -1,11 +1,9 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <div class="bg-gradient-to-r from-orange-50 to-orange-100 py-16">
+    <div class="bg-gradient-to-r from-orange-600 to-orange-500 py-16">
       <div class="container mx-auto px-4">
-        <h1 class="text-5xl md:text-6xl font-bold text-orange-900 mb-6">
-          O que vamos cozinhar hoje?
-        </h1>
-        <p class="text-xl text-orange-700 mb-8 max-w-2xl">
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">O que vamos cozinhar hoje?</h1>
+        <p class="text-xl text-white mb-8 max-w-2xl">
           Explore nossa coleção de receitas deliciosas e encontre sua próxima inspiração culinária.
         </p>
 
