@@ -11,7 +11,7 @@
         <div class="rounded-2xl shadow-sm max-w-4xl">
           <UInput
             v-model="query"
-            placeholder="Busque por nome, tipo sanguíneo, localização..."
+            placeholder="Busque pelo nome dos doadores"
             icon="i-heroicons-magnifying-glass"
             class="max-w-full"
           />
