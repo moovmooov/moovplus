@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-interface Recipe {
+type Recipe = {
   id: number
   name: string
   prepTimeMinutes: number

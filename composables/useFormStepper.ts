@@ -5,7 +5,7 @@ import ConfirmData from '~/components/FormSteps/ConfirmData.vue'
 import type { ZodSchema } from 'zod'
 import type { Component } from 'vue'
 
-interface Step {
+type Step = {
   title: string
   component: Component
   schema: ZodSchema

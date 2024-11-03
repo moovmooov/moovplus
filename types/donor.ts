@@ -18,7 +18,7 @@ export type Donor = {
   bloodGroup: string
 }
 
-export interface DonorResponse {
+export type DonorResponse = {
   users: Donor[]
   total: number
   skip: number
