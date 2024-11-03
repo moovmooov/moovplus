@@ -57,8 +57,8 @@
 
 <script setup lang="ts">
 import type { UserType } from '~/components/FormSteps/UserData.vue'
-import type { PetType } from '~/components/FormSteps/PetData.vue'
-import type { LocationType } from '~/components/FormSteps/LocationData.vue'
+import type { LocationType } from '~/types/location'
+import type { PetType } from '~/types/pet'
 
 const userData = useState<UserType>('userData')
 const petData = useState<PetType>('petData')

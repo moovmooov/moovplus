@@ -31,20 +31,13 @@
 
 <script setup lang="ts">
 import type { UserType } from './UserData.vue'
-
-type Species = 'Cachorro' | 'Gato'
+import type { Species, PetType } from '~/types/pet'
 
 const species: Species[] = ['Cachorro', 'Gato']
 
 const breedsItems: Record<Species, string[]> = {
   Cachorro: ['Mastiff Ingles', 'Pitbull', 'Poodle', 'Shih Tzu', 'Vira-lata', 'Outro'],
   Gato: ['Persa', 'Siamês', 'Angorá', 'Sphynx', 'Ragdoll', 'Outro']
-}
-
-export type PetType = {
-  species: Species | ''
-  breed: string
-  customBreed: string
 }
 
 const userData = useState<UserType>('userData')

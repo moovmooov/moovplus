@@ -58,24 +58,10 @@
 
 <script setup lang="ts">
 import { brazilStates } from '@/utils/brazil-states'
-import type { PetType } from './PetData.vue'
+import type { LocationAPIType, LocationType } from '~/types/location'
+import type { PetType } from '~/types/pet'
 
 const petData = useState<PetType>('petData')
-
-type LocationAPIType = {
-  logradouro: string
-  bairro: string
-  localidade: string
-  estado: string
-}
-
-export type LocationType = {
-  cep: string
-  state: string
-  city: string
-  neighborhood: string
-  street: string
-}
 
 const locationData = useState<LocationType>('locationData', () => ({
   cep: '',

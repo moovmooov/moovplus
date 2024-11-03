@@ -123,18 +123,7 @@
 </template>
 
 <script setup lang="ts">
-type Recipe = {
-  id: number
-  name: string
-  ingredients: string[]
-  instructions: string[]
-  prepTimeMinutes: number
-  cookTimeMinutes: number
-  servings: number
-  caloriesPerServing: number
-  tags: string[]
-  image: string
-}
+import type { Recipe } from '~/types/recipe'
 
 const props = defineProps<{
   modelValue: boolean
