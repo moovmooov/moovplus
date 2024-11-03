@@ -5,7 +5,7 @@
     </h1>
     <p class="text-gray-600 mb-8">Por favor, preencha os dados do seu pet abaixo</p>
     <div class="space-y-6">
-      <UFormGroup label="Especie" name="species">
+      <UFormGroup label="Espécie" name="species">
         <USelectMenu
           v-model="petData.species"
           :options="species"

@@ -30,24 +30,21 @@ const cards = [
   {
     title: 'Moov+ Pet Saúde',
     description: 'Garanta o bem-estar do seu melhor amigo com um seguro saúde sob medida!',
-    image:
-      'https://www.finom.edu.br/public/templateEditor/kcfinder/upload/images/mat%C3%A9ria%20medicina%20veterin%C3%A1ria.png',
+    image: '/images/veterinary.webp',
     to: '/services/pet-health',
     color: 'bg-blue-500'
   },
   {
     title: 'Moov+ Receitas',
     description: 'Acesse nossas receitas de forma fácil e prática!',
-    image:
-      'https://img.freepik.com/fotos-gratis/mulher-cozinhar-em-cozinha_1303-12914.jpg?semt=ais_hybrid',
+    image: '/images/cooking.webp',
     to: '/services/recipes',
     color: 'bg-yellow-500'
   },
   {
     title: 'Moov+ Doações',
     description: 'Encontre candidatos ideais para doação de sangue e salve vidas!',
-    image:
-      'https://tdsa.com.br/wp-content/uploads/2021/08/img-5-acoes-para-preparar-uma-doacao-de-sangue.jpg',
+    image: '/images/blood-donor.webp',
     to: '/services/blood-donation',
     color: 'bg-red-500'
   }
