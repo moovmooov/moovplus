@@ -79,7 +79,7 @@ watch(
       const { data } = await useFetch<LocationAPIType>(`https://viacep.com.br/ws/${cleanCep}/json/`)
 
       if (data.value) {
-        locationData.value.state = data.value.estado
+        locationData.value.state = data.value.uf
         locationData.value.city = data.value.localidade
         locationData.value.neighborhood = data.value.bairro
         locationData.value.street = data.value.logradouro

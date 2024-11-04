@@ -62,7 +62,7 @@ const locationSchema = z.object({
     .string()
     .transform((val) => val.replace(/\D/g, ''))
     .refine((val) => val.length === 8, 'CEP inválido'),
-  state: z.string().min(1, 'O Estado é obrigatório'),
+  state: z.string().min(2, 'O Estado é obrigatório'),
   city: z.string().min(1, 'A cidade é obrigatória'),
   neighborhood: z.string().min(1, 'O bairro é obrigatório'),
   street: z.string().min(1, 'A rua é obrigatória')
