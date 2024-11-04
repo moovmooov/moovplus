@@ -40,8 +40,9 @@
                 data-maska-reversed
                 data-maska-tokens="0:[0-9]"
                 class="font-medium text-gray-800"
-                >R$ {{ userData.monthlyIncome || '-' }}</span
               >
+                R$ {{ userData.monthlyIncome || '-' }}
+              </span>
             </div>
           </div>
         </div>
@@ -107,9 +108,9 @@
 </template>
 
 <script setup lang="ts">
+import type { PetType } from '~/types/pet'
 import type { UserType } from './UserData.vue'
-import type { PetType } from './PetData.vue'
-import type { LocationType } from './LocationData.vue'
+import type { LocationType } from '~/types/location'
 
 const userData = useState<UserType>('userData')
 const petData = useState<PetType>('petData')
