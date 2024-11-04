@@ -13,7 +13,12 @@ export function useRecipes(
   })
 
   const recipes = computed(() => data.value?.recipes || [])
-  const totalResults = computed(() => data.value?.total || 0)
+  const totalResults = computed(() => {
+    if (filteredRecipes.value.length === 0) {
+      return 0
+    }
+    return data.value?.total || 0
+  })
 
   const categories = computed(() => {
     const uniqueCategories = new Set(recipes.value.flatMap((recipe) => recipe.tags))
