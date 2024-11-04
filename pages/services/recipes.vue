@@ -37,6 +37,10 @@
         <h3 class="text-2xl font-medium text-gray-800 mb-2">Nenhuma receita foi encontrada</h3>
         <p class="text-gray-600">Tente selecionar diferentes categorias</p>
       </div>
+
+      <div class="flex justify-center mt-8">
+        <UPagination v-model="page" :total="totalResults" />
+      </div>
     </div>
 
     <RecipeDetailModal v-if="selectedRecipe" v-model="isModalOpen" :recipe="selectedRecipe" />
@@ -46,24 +50,15 @@
 <script setup lang="ts">
 import type { Recipe } from '~/types/recipe'
 
-const { recipes, error } = useRecipes()
-
+const page = ref(1)
+const itemsPerPage = 12
 const selectedCategories = ref<string[]>([])
 
-const categories = computed(() => {
-  const uniqueCategories = new Set(recipes.value.flatMap((recipe) => recipe.tags))
-  return Array.from(uniqueCategories).sort()
-})
-
-const filteredRecipes = computed(() => {
-  if (selectedCategories.value.length === 0) {
-    return recipes.value
-  }
-
-  return recipes.value.filter((recipe) =>
-    selectedCategories.value.every((category) => recipe.tags.includes(category))
-  )
-})
+const { filteredRecipes, error, totalResults, categories } = useRecipes(
+  page,
+  itemsPerPage,
+  selectedCategories
+)
 
 const selectedRecipe = ref<Recipe | null>(null)
 const isModalOpen = ref(false)

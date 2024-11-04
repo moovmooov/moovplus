@@ -11,6 +11,7 @@ export function useDonors(query: Ref<string>, page: Ref<number>, itemsPerPage: n
       q: computed(() => query.value || '')
     }
   })
+
   const donors = computed<Donor[]>(() => {
     if (!data.value?.users) return []
 
@@ -36,10 +37,17 @@ export function useDonors(query: Ref<string>, page: Ref<number>, itemsPerPage: n
     }))
   })
 
+  const currentPageStart = computed(() => (page.value - 1) * itemsPerPage + 1)
+  const currentPageEnd = computed(() => Math.min(page.value * itemsPerPage, data.value?.total || 0))
+  const totalResults = computed(() => data.value?.total || 0)
+
   return {
     donors,
     data,
     status,
-    error
+    error,
+    currentPageStart,
+    currentPageEnd,
+    totalResults
   }
 }

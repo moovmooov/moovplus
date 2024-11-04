@@ -80,7 +80,6 @@
 
 <script setup lang="ts">
 import { refDebounced } from '@vueuse/core'
-import { computed } from 'vue'
 
 const columns = [
   { key: 'image' },
@@ -96,14 +95,14 @@ const queryDebounced = refDebounced(query, 300)
 const page = ref(1)
 const itemsPerPage = 10
 
-const { donors, data, status } = useDonors(queryDebounced, page, itemsPerPage)
-
 const bloodGroupClass = computed(() => (bloodGroup: string) => ({
   'bg-red-100 text-red-800': bloodGroup.includes('+'),
   'bg-blue-100 text-blue-800': bloodGroup.includes('-')
 }))
 
-const currentPageStart = computed(() => (page.value - 1) * itemsPerPage + 1)
-const currentPageEnd = computed(() => Math.min(page.value * itemsPerPage, data.value?.total || 0))
-const totalResults = computed(() => data.value?.total || 0)
+const { donors, status, currentPageStart, currentPageEnd, totalResults } = useDonors(
+  queryDebounced,
+  page,
+  itemsPerPage
+)
 </script>
