@@ -42,7 +42,7 @@
           </template>
 
           <template #image-data="{ row }">
-            <img :src="row.image" :alt="row.fullName" class="w-10 h-10 rounded-full object-cover" />
+            <img :src="row.image" :alt="row.fullName" class="w-10 h-10 rounded-full object-cover" >
           </template>
 
           <template #bloodGroup-data="{ row }">

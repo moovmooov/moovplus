@@ -2,7 +2,7 @@
   <UModal v-model="isOpen" :ui="{ width: 'sm:max-w-[95vw] lg:max-w-[1200px]' }">
     <div class="flex flex-col md:flex-row h-[90vh] md:h-[80vh]">
       <div class="md:w-2/5 h-48 md:h-full relative md:rounded-l-xl overflow-hidden">
-        <img :src="recipe.image" :alt="recipe.name" class="w-full h-full object-cover" />
+        <img :src="recipe.image" :alt="recipe.name" class="w-full h-full object-cover" >
         <div
           class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent md:hidden"
         />

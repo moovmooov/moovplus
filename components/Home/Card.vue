@@ -5,8 +5,7 @@
     <img
       :src="image"
       class="h-full w-full object-cover rounded-xl transform transition-transform duration-700 hover:scale-110"
-    />
-
+    >
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/90" />
 
     <div

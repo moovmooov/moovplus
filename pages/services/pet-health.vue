@@ -19,6 +19,7 @@
           />
         </div>
         <UForm
+          v-if="isFormReady"
           :schema="steps[currentStep].schema"
           :state="formState[currentStep]"
           @submit="onSubmit"
@@ -60,11 +61,32 @@ import type { UserType } from '~/components/FormSteps/UserData.vue'
 import type { LocationType } from '~/types/location'
 import type { PetType } from '~/types/pet'
 
-const userData = useState<UserType>('userData')
-const petData = useState<PetType>('petData')
-const locationData = useState<LocationType>('locationData')
+const userData = useState<UserType>('userData', () => ({
+  name: '',
+  birthDate: '',
+  cpf: '',
+  monthlyIncome: ''
+}))
+
+const petData = useState<PetType>('petData', () => ({
+  species: '',
+  breed: '',
+  customBreed: ''
+}))
+
+const locationData = useState<LocationType>('locationData', () => ({
+  cep: '',
+  state: '',
+  city: '',
+  neighborhood: '',
+  street: ''
+}))
 
 const formState = computed(() => [userData.value, petData.value, locationData.value])
+
+const isFormReady = computed(() => {
+  return formState.value.every((state) => state !== undefined)
+})
 
 const { steps, currentStep, canGoPrevious, nextStep, previousStep } = useFormStepper()
 
