@@ -35,7 +35,9 @@ bun run dev
 
 ## Notas de Interface
 
-Sempre gosto de fazer a prototipação das telas no Excalidraw para ter uma ideia de como ficaria a interface e ter uma referência visual.
+- Sempre gosto de fazer a prototipação das telas no Excalidraw para ter uma ideia de como ficaria a interface e ter uma referência visual.
+- Achei que tinha poucas tags na API de receitas, então acabei modificando um pouco a lista de tags para criar uma lista de tags pré definidas para que o usuário possa escolher uma ou mais tags para a receita.
+
 ![](https://imgur.com/V9d5qr1.png)
 
 ## 📝 Notas de Desenvolvimento
